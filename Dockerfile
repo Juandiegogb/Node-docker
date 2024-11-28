@@ -1,8 +1,8 @@
-FROM node:alpine
-
-
+FROM node
 WORKDIR /app
-COPY * /app/
-
+COPY package*.json ./
+RUN npm install pnpm -g
 RUN pnpm i
-RUN pnpm run start
+COPY * .
+EXPOSE 3000
+CMD ["npm", "start"]
